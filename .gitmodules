@@ -1,3 +1,3 @@
-[submodule "sane-backends"]
-	path = sane-backends
+[submodule "sane-backends/upstream"]
+	path = sane-backends/upstream
 	url = https://gitlab.com/sane-project/backends.git

@@ -1,0 +1,39 @@
+diff --git a/backend/epson2-ops.c b/backend/epson2-ops.c
+index 61930f6..5466e71 100644
+--- a/backend/epson2-ops.c
++++ b/backend/epson2-ops.c
+@@ -89,7 +89,7 @@ static struct EpsonCmd epson_cmd[] = {
+   {"D1",'I','i','F', 0 ,'C','G','D','R', 0 ,'A', 0 ,{ 0, 0, 0},'Z', 0 , 0 ,'@','g','d', 0 ,'z', 0 , 0 , 0 ,'f', 0 ,  0 , 0   ,'!', 0 , 0 , 0 , 0 ,'t', 0 , 0 , 0 , 0 },
+   {"D2",'I','i','F', 0 ,'C','G','D','R', 0 ,'A', 0 ,{ 0, 0, 0},'Z', 0 , 0 ,'@','g','d', 0 ,'z', 0 , 0 , 0 ,'f','e',  0 , 0   ,'!', 0 ,'N', 0 , 0 ,'t', 0 , 0 , 0 , 0 },
+   {"D7",'I','i','F', 0 ,'C','G','D','R', 0 ,'A', 0 ,{ 0, 0, 0},'Z', 0 , 0 ,'@','g','d', 0 ,'z', 0 , 0 , 0 ,'f','e','\f', 0   ,'!', 0 ,'N', 0 , 0 ,'t', 0 , 0 , 0 , 0 },
+-  {"D8",'I','i','F', 0 ,'C','G','D','R', 0 ,'A', 0 ,{ 0, 0, 0},'Z', 0 , 0 ,'@','g','d', 0 ,'z', 0 , 0 , 0 ,'f','e','\f', 0   ,'!', 0 ,'N', 0 , 0 ,'t', 0 , 0 , 0 , 0 },
++  {"D8",'I','i','F', 0 ,'C','G','D','R', 0 ,'A', 0 ,{ 0, 0, 0},'Z', 0 , 0 ,'@','g','d', 0 ,'z', 0 , 0 , 0 ,'f','e','\f', 0   ,'!', 0 ,'N', 0 , 0 ,'t', 0 , 0 ,'I', 0 },
+ };
+ 
+ 
+diff --git a/backend/epson2_usb.c b/backend/epson2_usb.c
+index 4f354d7..f1f6aed 100644
+--- a/backend/epson2_usb.c
++++ b/backend/epson2_usb.c
+@@ -38,6 +38,7 @@ SANE_Word sanei_epson_usb_product_ids[] = {
+   0x0806, /* PM-A850, Stylus Photo RX600 */
+   0x0807, /* Stylus Photo RX500, Stylus Photo RX510 */
+   0x0808, /* Stylus CX5300, Stylus CX5400 */
++  0x080a, /* F-3200 */
+   0x080d, /* Stylus CX4500, Stylus CX4600 */
+   0x080e, /* PX-A550, Stylus CX3500, Stylus CX3600, Stylus CX3650 */
+   0x080f, /* Stylus Photo RX420, Stylus Photo RX425, Stylus Photo RX430 */
+diff --git a/doc/descriptions/epson2.desc b/doc/descriptions/epson2.desc
+index 518e545..c763460 100644
+--- a/doc/descriptions/epson2.desc
++++ b/doc/descriptions/epson2.desc
+@@ -619,7 +619,7 @@
+ :model      "F-3200"			; product spec (JP)
+ :interface  "USB IEEE1394"
+ :usbid      "0x04b8" "0x080a"
+-:status     :unsupported
++:status     :untested
+ :comment    "Film scanner"
+ 
+ :model      "F-3200 Photo"
+ :interface  "USB IEEE1394"
