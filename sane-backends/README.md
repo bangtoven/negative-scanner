@@ -18,6 +18,39 @@ Apply it after cloning:
 
 ```sh
 git submodule update --init sane-backends/upstream
-cd sane-backends/upstream
-git apply ../f3200.patch
+git -C sane-backends/upstream apply ../f3200.patch
+```
+
+Build a local `scanimage`:
+
+```sh
+brew install pkg-config libusb
+
+mkdir -p build/sane-backends local/sane-f3200
+cd build/sane-backends
+
+../../sane-backends/upstream/configure \
+  --prefix="$PWD/../../local/sane-f3200" \
+  --disable-locking \
+  --disable-nls \
+  --without-gphoto2 \
+  --without-v4l \
+  --without-snmp \
+  --without-avahi \
+  --without-libjpeg \
+  --without-libtiff \
+  --without-libpng \
+  BACKENDS=epson2 \
+  PRELOADABLE_BACKENDS=epson2
+
+make -j"$(sysctl -n hw.ncpu)"
+make install
+cd ../..
+```
+
+Verify:
+
+```sh
+local/sane-f3200/bin/scanimage --version
+local/sane-f3200/bin/scanimage -L
 ```
